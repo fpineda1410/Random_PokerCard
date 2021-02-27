@@ -10,7 +10,12 @@ window.onload = function() {
 
 function render(variables = {}) {
 
-    let cover = `icono`;
+    let cover = ['♠',' ♥','&#9752;','&#9830;'];
+    let icon = cover[Math.floor(Math.random() * 3)]
+    if ((icon == '&#9752;')||(icon == '♠')){
+        var color = 'black';
+    }else{color='red';}
+
     let num = variables.number;
    
   if (variables.card_nums == 1) {
@@ -18,8 +23,13 @@ function render(variables = {}) {
   }
     //conviene hacer la logica del icono afuera, la variable el sting del icono
     document.querySelector("#id_updater").innerHTML = 
-    `<section>
-        <div><h1>${num}</h1></div>
+    `<section class="card card--heart" value="${icon}" style="color: ${color};">
+        <div class="card__inner card__inner--centered">
+            <div class="card__column">
+                <div class="card__symbol">${num}</div>
+                <div class="card__symbol">${num}</div>
+            </div>
+        </div>
     </section>
         `;
 
